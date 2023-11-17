@@ -1,28 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { log } from 'console';
 import { Pokemon } from './pokemon';
 import { POKEMONS } from './mock-pokemon-list';
 
 @Component({
   standalone: true,
   selector: 'app-root',
-  template: `<h1>Liste de pokémons</h1>`
+  templateUrl: "app.component.html"
 })
 export class AppComponent implements OnInit {
-  pokemonList: Pokemon[] = POKEMONS ;
-  
+  pokemonList: Pokemon[] = POKEMONS ; // initialise la variable pokemonList qui est de typePokémon dans un tableau qui prends comme données POKEMONS (liste ddes pokémons)
+  pokemonSelected: Pokemon|undefined;
 
   ngOnInit(): void {
     console.table(this.pokemonList);
-    this.selectPokemon(this.pokemonList[0]);
   }
 
-  selectPokemon(pokemon: Pokemon) {
-    console.log(`${pokemon.name}`);
+  selectPokemon(pokemonId: string) {
+    //const index: number = +(event.target as HTMLInputElement).value; // + devant l'expression va la convertir en Number
+
+    const id = +pokemonId;
+    const pokemon: Pokemon|undefined = this.pokemonList.find(pokemon => pokemon.id == +pokemonId);
+    if (pokemon) {
+      console.log(`Vous avez demandé le pokémon ${pokemon.name}`);
+      this.pokemonSelected = pokemon;
+    } else {
+      console.log(`Vous avez demandé un pokémon qui n'existe pas`);
+      this.pokemonSelected = pokemon;
+    }
+    
     
   }
 }
-
-// Modifier le template pour afficher le message "Liste de pokémon"
-// PokemonList, chargé la liste des 12 pokémons
-// selectPokémon: paramètre = un pokémon qui proviens de la liste mock

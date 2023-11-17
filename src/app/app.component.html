@@ -1,0 +1,25 @@
+<h1>Liste de pokémon</h1>
+<!--
+    #input = déclare la variable input
+    (keyup="0") = Permet de mettre a jour la valeur à chaque relevée de touche
+-->
+<input 
+#input 
+(keyup)="selectPokemon(input.value)"
+type="number"
+/>
+<!-- ? = Si pokemonSelected n'est pas défini, n'affiche rien plutôt que renvoyer une erreur -->
+<p>{{ pokemonSelected?.name }}</p>
+
+<p>{{ pokemonList[0].name }}</p>
+<p>{{ pokemonList[1].name }}</p>
+<p>{{ pokemonList[2].name }}</p>
+<p>{{ pokemonList[3].name }}</p>
+<p>{{ pokemonList[4].name }}</p>
+<p>{{ pokemonList[5].name }}</p>
+<p>{{ pokemonList[6].name }}</p>
+<p>{{ pokemonList[7].name }}</p>
+<p>{{ pokemonList[8].name }}</p>
+<p>{{ pokemonList[9].name }}</p>
+<p>{{ pokemonList[10].name }}</p>
+<p>{{ pokemonList[11].name }}</p>
