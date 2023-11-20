@@ -2,12 +2,12 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { Pokemon } from './pokemon';
 import { POKEMONS } from './mock-pokemon-list';
 import { CommonModule } from '@angular/common';
+import { AppModule } from './app.module';
+import { BorderCardDirective } from './border-card.directive';
 
 @Component({
-  standalone: true,
   selector: 'app-root',
   templateUrl: "app.component.html",
-  imports: [CommonModule],
   styleUrl: "app.component.css",
 })
 
