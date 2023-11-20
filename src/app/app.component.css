@@ -1,0 +1,28 @@
+.min-size {
+    min-width: 269px;
+    min-height: 145px;
+}
+
+@media screen and (max-width: 1150px ) {
+    .row .col.s6 {
+        margin-left: 0;
+    }
+    .row {
+        width: 100%;
+        display: flex ;
+        flex-wrap: wrap;
+        margin: 0;
+        justify-content: center;
+    }
+    
+}
+
+@media screen and (max-width: 633px ) {
+    
+    .min-size {
+        min-width: 369px;
+        min-height: 245px;
+    }
+    
+    
+}

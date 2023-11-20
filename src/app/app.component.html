@@ -1,23 +1,19 @@
-<h1>Liste de pokémon</h1>
-<!--
-    #input = déclare la variable input
-    (keyup) = Permet de mettre a jour la valeur à chaque relevée de touche
-    (keyup) = Permet de mettre a jour la valeur à chaque fois que la touche "entrée" est relevée.
--->
-<input 
-#input 
-(keyup.enter)="selectPokemon(input.value)"
-type="number"
-/>
+<h1 class="center">Gestionnaire de pokémon</h1>
 
-<!-- ? = Si pokemonSelected n'est pas défini, n'affiche rien plutôt que renvoyer une erreur -->
-<p *ngIf="pokemonSelected">
-    Vous avez séléctionnez le pokémon: {{ pokemonSelected?.name }}
-</p>
-<p *ngIf="!pokemonSelected">
-    Aucun pokémon n'a été trouvé.
-</p>
-
-<p *ngFor="let pokemon of pokemonList">
-    {{pokemon.name}}
-</p>
+<div class="container">
+    <div class="row ">
+        <div *ngFor="let pokemon of pokemonList" class="col m4 s6 min-size">
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img class="img-size" [src]="pokemon.picture" alt="image de {{pokemon.name}}">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p>{{ pokemon.name }}</p>
+                        <p><small>{{ pokemon.created | date: "dd , MMMM yyyy, hh:mm:ss " }}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

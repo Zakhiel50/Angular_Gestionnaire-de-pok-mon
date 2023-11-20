@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-root',
   templateUrl: "app.component.html",
   imports: [CommonModule],
+  styleUrl: "app.component.css",
 })
 
 export class AppComponent implements OnInit {
