@@ -1,12 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { Pokemon } from './pokemon';
 import { POKEMONS } from './mock-pokemon-list';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
   selector: 'app-root',
-  templateUrl: "app.component.html"
+  templateUrl: "app.component.html",
+  imports: [CommonModule],
 })
+
 export class AppComponent implements OnInit {
   pokemonList: Pokemon[] = POKEMONS ; // initialise la variable pokemonList qui est de typePokémon dans un tableau qui prends comme données POKEMONS (liste ddes pokémons)
   pokemonSelected: Pokemon|undefined;
