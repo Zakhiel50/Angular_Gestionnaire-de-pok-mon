@@ -1,19 +1,2 @@
 <h1 class="center">Gestionnaire de pokémon</h1>
-
-<div class="container">
-    <div class="row ">
-        <div *ngFor="let pokemon of pokemonList" class="col m4 s6 min-size">
-            <div class="card horizontal">
-                <div class="card-image">
-                    <img class="img-size" [src]="pokemon.picture" alt="image de {{pokemon.name}}">
-                </div>
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <p>{{ pokemon.name }}</p>
-                        <p><small>{{ pokemon.created | date: "dd , MMMM yyyy, hh:mm:ss " }}</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<app-pokemon-table></app-pokemon-table>
