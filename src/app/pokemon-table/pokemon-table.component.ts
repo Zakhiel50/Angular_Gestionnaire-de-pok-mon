@@ -5,11 +5,12 @@ import { BorderCardDirective } from '../border-card.directive';
 import { pipe } from 'rxjs';
 import { DatePipe, NgForOf } from '@angular/common';
 import { PokemonTypeColorPipe } from '../pokemon-type-color.pipe';
+import { DetailPokemonComponent } from '../detail-pokemon/detail-pokemon.component';
 
 
 @Component({
   standalone: true,
-  imports:[BorderCardDirective, DatePipe, NgForOf, PokemonTypeColorPipe],
+  imports:[BorderCardDirective, DatePipe, NgForOf, PokemonTypeColorPipe, DetailPokemonComponent],
   selector: 'app-pokemon-table',
   templateUrl: 'pokemon-table.html',
   styleUrls: ['pokemon-table.css']
@@ -17,7 +18,7 @@ import { PokemonTypeColorPipe } from '../pokemon-type-color.pipe';
 
 
 
-export class PokemonTableComponent implements OnInit{
+export class PokemonTableComponent{
   pokemonList: Pokemon[] = POKEMONS ; // initialise la variable pokemonList qui est de typePokémon dans un tableau qui prends comme données POKEMONS (liste ddes pokémons)
   pokemonSelected: Pokemon|undefined;
 

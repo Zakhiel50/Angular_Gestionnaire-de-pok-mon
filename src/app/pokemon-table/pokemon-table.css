@@ -8,6 +8,7 @@
     border-radius: 6px;
 }
 
+
 @media screen and (max-width: 1150px ) {
     .row .col.s6 {
         margin-left: 0;
