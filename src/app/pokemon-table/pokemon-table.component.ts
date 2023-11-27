@@ -6,6 +6,7 @@ import { pipe } from 'rxjs';
 import { DatePipe, NgForOf } from '@angular/common';
 import { PokemonTypeColorPipe } from '../pokemon-type-color.pipe';
 import { DetailPokemonComponent } from '../detail-pokemon/detail-pokemon.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,6 +22,8 @@ import { DetailPokemonComponent } from '../detail-pokemon/detail-pokemon.compone
 export class PokemonTableComponent{
   pokemonList: Pokemon[] = POKEMONS ; // initialise la variable pokemonList qui est de typePokémon dans un tableau qui prends comme données POKEMONS (liste ddes pokémons)
   pokemonSelected: Pokemon|undefined;
+
+ 
 
   ngOnInit(): void {
     console.table(this.pokemonList);
@@ -39,6 +42,10 @@ export class PokemonTableComponent{
       this.pokemonSelected = pokemon;
     }
     
-    
+  }
+  constructor(private router: Router) { }
+
+  goToPokemonDetail(pokemon: Pokemon) {
+    this.router.navigate(["/pokemon", pokemon.id])
   }
 }
