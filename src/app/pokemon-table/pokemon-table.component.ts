@@ -1,17 +1,23 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../pokemon';
 import { POKEMONS } from '../mock-pokemon-list';
 import { BorderCardDirective } from '../border-card.directive';
+import { pipe } from 'rxjs';
+import { DatePipe, NgForOf } from '@angular/common';
+import { PokemonTypeColorPipe } from '../pokemon-type-color.pipe';
+
 
 @Component({
-  selector: 'app-pokemon-table',
   standalone: true,
-  imports: [CommonModule, BorderCardDirective],
+  imports:[BorderCardDirective, DatePipe, NgForOf, PokemonTypeColorPipe],
+  selector: 'app-pokemon-table',
   templateUrl: 'pokemon-table.html',
-  styleUrl: `pokemon-table.css`
+  styleUrls: ['pokemon-table.css']
 })
-export class PokemonTableComponent {
+
+
+
+export class PokemonTableComponent implements OnInit{
   pokemonList: Pokemon[] = POKEMONS ; // initialise la variable pokemonList qui est de typePokémon dans un tableau qui prends comme données POKEMONS (liste ddes pokémons)
   pokemonSelected: Pokemon|undefined;
 
