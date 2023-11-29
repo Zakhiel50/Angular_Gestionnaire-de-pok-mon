@@ -1,7 +1,8 @@
 <div class="container">
+    <h1 class="center">Pokémons</h1>
     <div class="row ">
         <div *ngFor="let pokemon of pokemonList" class="col m4 s6 min-size">
-            <div (click)="goToPokemonDetail(pokemon)" class="card horizontal hover" (click)="selectPokemon" pokemonBorderCard="red">
+            <div (click)="goToPokemonDetail(pokemon)" class="card horizontal hover"  pokemonBorderCard="red">
                 <div class="card-image">
                     <img class="img-size" [src]="pokemon.picture" alt="image de {{pokemon.name}}">
                 </div>
@@ -9,9 +10,12 @@
                     <div class="card-content">
                         <p>{{ pokemon.name }}</p>
                         <p><small>{{ pokemon.created | date: "dd MMMM YYYY à hh:mm" }}</small></p>
-                        <span *ngFor="let type of pokemon.types" class="{{ type | pokemonTypeColor }}">
-                            {{ type }}
-                        </span>
+                        <div class="container-type">
+                            <span *ngFor="let type of pokemon.types" class="{{ type | pokemonTypeColor }}">
+                                {{ type }}
+                            </span>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
