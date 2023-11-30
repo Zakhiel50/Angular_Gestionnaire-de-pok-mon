@@ -9,7 +9,10 @@ import { PokemonService } from '../pokemon.service';
 @Component({
   selector: 'app-detail-pokemon',
   standalone: true,
-  imports: [CommonModule, PokemonTypeColorPipe],
+  imports: [
+    CommonModule, 
+    PokemonTypeColorPipe,
+  ],
   providers: [PokemonService],
   templateUrl: './detail-pokemon.component.html',
   styles: ``
@@ -27,16 +30,23 @@ export class DetailPokemonComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    
+    // récupère l'id dans l'url
     const pokemonId: string|null = this.route.snapshot.paramMap.get("id");
 
     if(pokemonId) {
+      // récupère le pokémon associé
       this.pokemon = this.pokemonService.getPokemonById(+pokemonId)
     }
   }
 
   goToPokemonTable() {
+    // renvoi l'utilisateur sur pokémonTable
     this.router.navigate(["/pokemons"]);
+  }
+
+  goToeditPokemon(pokemon: Pokemon) {
+    // renvoi l'utilisateur sur l'édition du pokémon
+    this.router.navigate(["/edit/pokemon", pokemon.id])
   }
   
 }

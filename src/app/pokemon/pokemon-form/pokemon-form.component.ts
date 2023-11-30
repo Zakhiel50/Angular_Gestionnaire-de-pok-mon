@@ -15,6 +15,7 @@ import { PokemonTypeColorPipe } from '../../pokemon-type-color.pipe';
     FormsModule,
   ],
   templateUrl: './pokemon-form.component.html',
+  styleUrl: "./pokemon-form.component.css"
 })
 export class PokemonFormComponent implements OnInit {
   @Input() pokemon: Pokemon;

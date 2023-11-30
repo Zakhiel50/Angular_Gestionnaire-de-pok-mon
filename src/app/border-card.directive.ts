@@ -39,6 +39,7 @@ export class BorderCardDirective {
     this.el.nativeElement.style.height = `${height}px`;
   }
 
+  // Séléctionne le style et la couleur de la bordure
   private setBorder(color: string, borderStyle: string) {
     let border = `${borderStyle} 4px ${color}` 
     this.el.nativeElement.style.border = border;

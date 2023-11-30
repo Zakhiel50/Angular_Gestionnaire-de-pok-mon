@@ -35,10 +35,12 @@ export class PokemonTableComponent{
     ) { }
 
   ngOnInit() {
+    // récupère le tableau de pokémons via le service
     this.pokemonList = this.pokemonService.getPokemonList();
   }
 
   goToPokemonDetail(pokemon: Pokemon) {
+    // Envoi l'utilisateur sur le pokémon séléctioné
     this.router.navigate(["/pokemon", pokemon.id])
   }
 }
