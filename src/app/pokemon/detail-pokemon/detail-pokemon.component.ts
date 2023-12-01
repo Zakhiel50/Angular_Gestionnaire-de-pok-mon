@@ -35,7 +35,8 @@ export class DetailPokemonComponent implements OnInit {
 
     if(pokemonId) {
       // récupère le pokémon associé
-      this.pokemon = this.pokemonService.getPokemonById(+pokemonId)
+      this.pokemonService.getPokemonById(+pokemonId)
+      .subscribe(pokemon => this.pokemon = pokemon)
     }
   }
 
@@ -44,7 +45,7 @@ export class DetailPokemonComponent implements OnInit {
     this.router.navigate(["/pokemons"]);
   }
 
-  goToeditPokemon(pokemon: Pokemon) {
+  goToEditPokemon(pokemon: Pokemon) {
     // renvoi l'utilisateur sur l'édition du pokémon
     this.router.navigate(["/edit/pokemon", pokemon.id])
   }

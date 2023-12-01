@@ -1,19 +1,42 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, catchError, of, tap } from 'rxjs';
+
 import { Pokemon } from './pokemon';
-import { POKEMONS } from './mock-pokemon-list';
+
 
 @Injectable()
 export class PokemonService {
 
+  constructor(private http: HttpClient) {}
 
-  getPokemonList(): Pokemon[] {
-    // retourne la liste de pokémons.
-    return POKEMONS;
+  getPokemonList(): Observable<Pokemon[]> {
+    // retourne la liste de pokémons via la simulation d'un serveur distant.
+    return this.http.get<Pokemon[]>("api/pokemons").pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, []))
+    );
   }
 
-  getPokemonById(pokemonId: number): Pokemon|undefined {
+  getPokemonById(pokemonId: number): Observable<Pokemon|undefined> {
     // vérifie si l'id du pokémon existe, si oui, récupère l'id du pokémon 
-    return POKEMONS.find(pokemon => pokemon.id == pokemonId);
+    return this.http.get<Pokemon>(`api/pokemons/${pokemonId}`).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) =>
+        this.handleError(error, undefined))
+    )
+  }
+
+  // Permet de log la réponse attendue
+  private log(response: Pokemon[]|Pokemon|undefined) {
+    console.table(response);
+  }
+
+  // Permet de renvoyer l'erreur s'il y à lieu d'être.
+  private handleError(error: Error, errorValue: any) {
+    console.error(error);
+    return of(errorValue);
+    
   }
 
   getPokemonTypeList(): string[] {

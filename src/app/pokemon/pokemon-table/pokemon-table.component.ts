@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Pokemon } from '../pokemon';
 import { BorderCardDirective } from '../../border-card.directive';
-import { DatePipe, NgForOf } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { PokemonTypeColorPipe } from '../../pokemon-type-color.pipe';
 import { DetailPokemonComponent } from '../detail-pokemon/detail-pokemon.component';
 import { Router } from '@angular/router';
@@ -11,9 +11,9 @@ import { PokemonService } from '../pokemon.service';
 @Component({
   standalone: true,
   imports:[
+    CommonModule,
     BorderCardDirective, 
     DatePipe, 
-    NgForOf, 
     PokemonTypeColorPipe, 
     DetailPokemonComponent
   ],
@@ -36,7 +36,9 @@ export class PokemonTableComponent{
 
   ngOnInit() {
     // récupère le tableau de pokémons via le service
-    this.pokemonList = this.pokemonService.getPokemonList();
+    this.pokemonService.getPokemonList()
+    // récupère les données du serveur
+    .subscribe(pokemonList => this.pokemonList = pokemonList);
   }
 
   goToPokemonDetail(pokemon: Pokemon) {

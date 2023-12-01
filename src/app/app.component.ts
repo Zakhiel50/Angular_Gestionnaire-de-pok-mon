@@ -1,20 +1,26 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { PokemonTableComponent } from './pokemon/pokemon-table/pokemon-table.component';
 import { DetailPokemonComponent } from './pokemon/detail-pokemon/detail-pokemon.component';
-import { RouterOutlet } from '@angular/router';
 import { Page404Component } from './page-404/page-404.component';
-import { FormsModule } from '@angular/forms';
 import { EditPokemonComponent } from './pokemon/edit-pokemon/edit-pokemon.component';
+import { AppModule } from './app.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    EditPokemonComponent,
+    HttpClientModule,
+    RouterOutlet,
     FormsModule,
+    HttpClientModule,
+    AppModule,
+    EditPokemonComponent,
     PokemonTableComponent,
     DetailPokemonComponent,
-    RouterOutlet,
     Page404Component,
   ],
   templateUrl: 'app.component.html',
