@@ -1,6 +1,7 @@
 <div class="container">
     <h1 class="center">Pokémons</h1>
     <div class="row ">
+        <app-search-pokemon></app-search-pokemon>
         <div *ngFor="let pokemon of pokemonList" class="col m4 s6 min-size">
             <div (click)="goToPokemonDetail(pokemon)" class="card horizontal hover"  pokemonBorderCard="red">
                 <div class="card-image">

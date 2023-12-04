@@ -7,6 +7,7 @@ import { DetailPokemonComponent } from '../detail-pokemon/detail-pokemon.compone
 import { Router, RouterLink } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
 import { AddPokemonComponent } from '../add-pokemon/add-pokemon.component';
+import { SearchPokemonComponent } from '../search-pokemon/search-pokemon.component';
 
 
 @Component({
@@ -19,6 +20,7 @@ import { AddPokemonComponent } from '../add-pokemon/add-pokemon.component';
     DetailPokemonComponent,
     RouterLink,
     AddPokemonComponent,
+    SearchPokemonComponent,
   ],
   providers:[PokemonService],
   selector: 'app-pokemon-table',

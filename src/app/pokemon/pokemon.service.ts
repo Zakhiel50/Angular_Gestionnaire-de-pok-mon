@@ -26,6 +26,18 @@ export class PokemonService {
     )
   }
 
+  // Permet de rechercher un pokémon avec un terme donné.
+  searchPokemonList(term: string): Observable<Pokemon[]> {
+    if(term.length <= 1) {
+      return of([]);
+    }
+    return this.http.get<Pokemon[]>(`api/pokemons/?name=${term}`).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) =>
+        this.handleError(error, []))
+    );
+  }
+
   // permet de persister les données de mise à jour du pokémon.
   updatePokemon(pokemon: Pokemon): Observable<null> {
     const httpOptions = {
