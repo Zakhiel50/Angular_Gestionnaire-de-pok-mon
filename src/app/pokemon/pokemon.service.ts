@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, of, tap } from 'rxjs';
-
 import { Pokemon } from './pokemon';
 
 
@@ -27,8 +26,29 @@ export class PokemonService {
     )
   }
 
+  // permet de persister les données de mise à jour du pokémon.
+  updatePokemon(pokemon: Pokemon): Observable<null> {
+    const httpOptions = {
+      headers: new HttpHeaders({ "Content-Type": "application/json" })
+    };
+
+    // envoi la requête de modification du pokémon
+    return this.http.put("api/pokemons", pokemon, httpOptions).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, null))
+    );
+  }
+
+  // permet de renvoyer l'information de suppression au serveur
+  deletePokemonById(pokemonId: number): Observable<null> {
+    return this.http.delete(`api/pokemons/${pokemonId}`).pipe(
+      tap((response) => this.log(response)),
+      catchError((error) => this.handleError(error, null))
+    );
+  } 
+
   // Permet de log la réponse attendue
-  private log(response: Pokemon[]|Pokemon|undefined) {
+  private log(response: Pokemon[]|Pokemon|undefined|any) {
     console.table(response);
   }
 

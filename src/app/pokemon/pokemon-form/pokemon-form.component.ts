@@ -62,8 +62,8 @@ export class PokemonFormComponent implements OnInit {
   }
 
   onSubmit() {
-    // envoi le formlaire et redirige l'utlisateur sur la carte du pokémon qu'il à modifié
-    console.log("submit form !");
-    this.router.navigate(["/pokemon", this.pokemon.id]);
+    // envoi le formulaire, envoi les modification au serveur et redirige l'utlisateur sur la carte du pokémon qu'il à modifié
+    this.pokemonService.updatePokemon(this.pokemon)
+    .subscribe(() => this.router.navigate(["/pokemon", this.pokemon.id]));
   }
 }
