@@ -5,6 +5,7 @@ import { Pokemon } from '../pokemon';
 import { Router, RouterLink } from '@angular/router';
 import { NgModel, NgForm, FormsModule } from '@angular/forms';
 import { PokemonTypeColorPipe } from '../../pokemon-type-color.pipe';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-pokemon-form',
@@ -14,6 +15,7 @@ import { PokemonTypeColorPipe } from '../../pokemon-type-color.pipe';
     PokemonTypeColorPipe,
     FormsModule,
     RouterLink,
+    LoaderComponent
   ],
   templateUrl: './pokemon-form.component.html',
   styleUrl: "./pokemon-form.component.css"

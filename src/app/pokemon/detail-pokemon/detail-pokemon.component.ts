@@ -5,6 +5,7 @@ import { Pokemon } from '../pokemon';
 import { PokemonTypeColorPipe } from '../../pokemon-type-color.pipe';
 import { Router } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-detail-pokemon',
@@ -12,6 +13,7 @@ import { PokemonService } from '../pokemon.service';
   imports: [
     CommonModule, 
     PokemonTypeColorPipe,
+    LoaderComponent
   ],
   providers: [PokemonService],
   templateUrl: './detail-pokemon.component.html',

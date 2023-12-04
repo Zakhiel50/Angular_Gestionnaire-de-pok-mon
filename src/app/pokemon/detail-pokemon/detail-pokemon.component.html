@@ -43,10 +43,7 @@
     </div>
     </div>
     </div>
-    <div *ngIf='!pokemon' >
-        <h4 class="center">Aucun pokémon trouvé ! 😞</h4>
-        <div class="card-action center">
-            <a (click)="goToPokemonTable()" class="hover">Retour</a>
-        </div>
+    <div *ngIf='!pokemon'>
+        <h4 class="center"><app-loader></app-loader></h4>
     </div>
     

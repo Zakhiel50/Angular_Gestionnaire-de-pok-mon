@@ -8,6 +8,7 @@ import { Router, RouterLink } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
 import { AddPokemonComponent } from '../add-pokemon/add-pokemon.component';
 import { SearchPokemonComponent } from '../search-pokemon/search-pokemon.component';
+import { LoaderComponent } from '../loader/loader.component';
 
 
 @Component({
@@ -21,6 +22,7 @@ import { SearchPokemonComponent } from '../search-pokemon/search-pokemon.compone
     RouterLink,
     AddPokemonComponent,
     SearchPokemonComponent,
+    LoaderComponent
   ],
   providers:[PokemonService],
   selector: 'app-pokemon-table',

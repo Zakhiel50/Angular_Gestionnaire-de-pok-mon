@@ -4,7 +4,7 @@ import { Pokemon } from '../pokemon';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
 import { PokemonFormComponent } from '../pokemon-form/pokemon-form.component';
-import { POKEMONS } from '../mock-pokemon-list';
+import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   selector: 'app-edit-pokemon',
@@ -12,6 +12,7 @@ import { POKEMONS } from '../mock-pokemon-list';
   imports: [
     CommonModule, 
     PokemonFormComponent,
+    LoaderComponent
   ],
   providers: [PokemonService],
   templateUrl: `./edit-pokemon.component.html`,
