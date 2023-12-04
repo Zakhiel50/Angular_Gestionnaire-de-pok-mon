@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from '../pokemon';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgModel, NgForm, FormsModule } from '@angular/forms';
 import { PokemonTypeColorPipe } from '../../pokemon-type-color.pipe';
 
@@ -13,6 +13,7 @@ import { PokemonTypeColorPipe } from '../../pokemon-type-color.pipe';
     CommonModule,
     PokemonTypeColorPipe,
     FormsModule,
+    RouterLink,
   ],
   templateUrl: './pokemon-form.component.html',
   styleUrl: "./pokemon-form.component.css"
@@ -20,6 +21,7 @@ import { PokemonTypeColorPipe } from '../../pokemon-type-color.pipe';
 export class PokemonFormComponent implements OnInit {
   @Input() pokemon: Pokemon;
   types: string[];
+  isAddForm: boolean;
 
   constructor(
     private pokemonService: PokemonService,
@@ -28,6 +30,7 @@ export class PokemonFormComponent implements OnInit {
   ngOnInit() {
     // récupère la liste des types via le Pokemonservice
     this.types = this.pokemonService.getPokemonTypeList();
+    this.isAddForm = this.router.url.includes("add");
   }
 
   hasType(type: string): boolean {
@@ -62,8 +65,16 @@ export class PokemonFormComponent implements OnInit {
   }
 
   onSubmit() {
-    // envoi le formulaire, envoi les modification au serveur et redirige l'utlisateur sur la carte du pokémon qu'il à modifié
+    // si l'url contient "add" alors ajoute un pokémon
+    if(this.isAddForm) {
+      this.pokemonService.addPokemon(this.pokemon)
+      .subscribe((pokemon: Pokemon) => this.router.navigate(["/pokemon", pokemon.id]));
+    } else {
+      // sinon
+      // envoi le formulaire, envoi les modification au serveur et redirige l'utlisateur sur la carte du pokémon qu'il à modifié
     this.pokemonService.updatePokemon(this.pokemon)
     .subscribe(() => this.router.navigate(["/pokemon", this.pokemon.id]));
+    }
+    
   }
 }

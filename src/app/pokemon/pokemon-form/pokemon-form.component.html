@@ -7,7 +7,7 @@
          <!-- Mémo: pattern="^[a-zA-Z0-9àéèç]{1,25}$"   (^ = début de la string) (a-z= lettre minuscules autorisées de "a" à "z" ) (A-Z= lettre majuscules autorisées de "A" à "Z" ) (0-9= tous les chiffres autorisés) (àéèç= cactère spéciaux autorisés "à", "é", "è", "ç") ({1,25}= nombre de caractère autorisés de 1 mini à 25 maxi) ($= indique la fin de la string) --- "hp et pc" ({1,3}= m1 chiffre mini et 3 chiffre maxi) -->
         <div class="form-group">
           <label for="name">Nom</label>
-          <input type="text" class="form-control" id="name"
+          <input type="text" class="form-control" id="name" placeholder="Entrez un nom"
                   required
                  
                   pattern="^[a-zA-Z0-9àéèç]{1,25}$"
@@ -19,6 +19,21 @@
                 Le nom du pokémon est requis (1-25).
           </div>
         </div>
+
+        <!-- Pokemon picture -->
+        <div *ngIf="isAddForm" class="form-group">
+          <label for="name">Image</label>
+          <input type="url" class="form-control" id="picture"
+                 required
+                 [(ngModel)]="pokemon.picture" name="picture"
+                 #picture="ngModel">
+  
+          <div [hidden]="picture.valid || picture.pristine"
+                class="card-panel red accent-1">
+                L'image du pokémon est requise.
+          </div>
+        </div>
+  
   
         <!-- Pokemon hp -->
         <div class="form-group">

@@ -17,6 +17,10 @@
     padding: 0px 0 20px 20px;
 }
 
+.btn-add {
+    font-size: 30px;
+}
+
 
 @media screen and (max-width: 1150px ) {
     .row .col.s6 {

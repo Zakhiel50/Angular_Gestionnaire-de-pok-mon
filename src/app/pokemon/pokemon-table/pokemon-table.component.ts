@@ -4,8 +4,9 @@ import { BorderCardDirective } from '../../border-card.directive';
 import { CommonModule, DatePipe } from '@angular/common';
 import { PokemonTypeColorPipe } from '../../pokemon-type-color.pipe';
 import { DetailPokemonComponent } from '../detail-pokemon/detail-pokemon.component';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { PokemonService } from '../pokemon.service';
+import { AddPokemonComponent } from '../add-pokemon/add-pokemon.component';
 
 
 @Component({
@@ -15,7 +16,9 @@ import { PokemonService } from '../pokemon.service';
     BorderCardDirective, 
     DatePipe, 
     PokemonTypeColorPipe, 
-    DetailPokemonComponent
+    DetailPokemonComponent,
+    RouterLink,
+    AddPokemonComponent,
   ],
   providers:[PokemonService],
   selector: 'app-pokemon-table',
@@ -45,4 +48,6 @@ export class PokemonTableComponent{
     // Envoi l'utilisateur sur le pokémon séléctioné
     this.router.navigate(["/pokemon", pokemon.id])
   }
+
+
 }
