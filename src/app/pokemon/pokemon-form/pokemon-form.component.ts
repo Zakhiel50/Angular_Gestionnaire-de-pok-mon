@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PokemonService } from '../pokemon.service';
 import { Pokemon } from '../pokemon';
 import { Router, RouterLink } from '@angular/router';
-import { NgModel, NgForm, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { PokemonTypeColorPipe } from '../../pokemon-type-color.pipe';
 import { LoaderComponent } from '../loader/loader.component';
 
