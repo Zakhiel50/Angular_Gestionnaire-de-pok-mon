@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.auth = this.auth;
+    this.auth = this.authService;
   }
 
   setMessage() {

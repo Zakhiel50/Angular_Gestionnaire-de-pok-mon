@@ -83,6 +83,7 @@ export class PokemonService {
     return of(errorValue);
     
   }
+  
 
   getPokemonTypeList(): string[] {
     return [
